@@ -1,35 +1,26 @@
-﻿<Window x:Class="CryptoAppForDCTV2.MainWindow"
+﻿<Window x:Class="CryptoAppForDCTV2.Forms.FindCryptoCoin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CryptoAppForDCTV2"
+        xmlns:local="clr-namespace:CryptoAppForDCTV2.Forms"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Головна сторінка" Height="623" Width="1043" MinHeight="623" MinWidth="1043">
+        Title="Пошук валюти" Height="623" Width="1043" MinHeight="623" MinWidth="1043">
     <Grid Background="LightGray">
         <Border Background="#462a63" BorderBrush="#462a63" BorderThickness="1" Padding="10" Margin="0,0,0,506" VerticalAlignment="Top">
             <StackPanel>
                 <Grid Height="61">
-                    <Button x:Name="MainButton" Content="На головну" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.747,-0.263" Height="60" Width="150" Cursor="Hand" FontSize="20" FontWeight="Bold"/>
-                    <Button x:Name="FindButton" Content="Пошук валюти" HorizontalAlignment="Left" Margin="642,0,0,1" VerticalAlignment="Bottom" RenderTransformOrigin="0.747,-0.263" Height="60" Width="179" Cursor="Hand" FontSize="20" FontWeight="Bold" Click="FindButton_Click"/>
+                    <Button x:Name="MainButton" Content="На головну" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.747,-0.263" Height="60" Width="150" Cursor="Hand" FontSize="20" FontWeight="Bold" Click="MainButton_Click"/>
+                    <Button x:Name="FindButto" Content="Пошук валюти" HorizontalAlignment="Right" Margin="0,0,200,0" VerticalAlignment="Center" RenderTransformOrigin="0.747,-0.263" Height="60" Width="179" Cursor="Hand" FontSize="20" FontWeight="Bold"/>
                 </Grid>
             </StackPanel>
         </Border>
-        <Border Margin="20,95,20,425" Background="White" CornerRadius="30" Padding="20">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="334"></ColumnDefinition>
-                    <ColumnDefinition Width="334"></ColumnDefinition>
-                    <ColumnDefinition Width="334"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <TextBlock FontSize="20" Text="Символ"  Grid.Column="0"/>
-                <TextBlock FontSize="20" Text="Назва" Grid.Column="1"/>
-                <TextBlock FontSize="20" Text="Ціна у доларах" Grid.Column="2"/>
-            </Grid>
+        <Border Margin="20,95,20,425" Background="White" CornerRadius="30">
+            <TextBox TextWrapping="Wrap" Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" Cursor="Arrow" FontSize="18" Margin="20,10,20,20" materialDesign:HintAssist.Hint="Введіть назву токена або його символ, наприклад: Bitcoin"/>
         </Border>
         <Border Background="White" Margin="20,166,20,20" CornerRadius="30">
-            <ListBox x:Name="ListBoxCoins" ItemsSource="{Binding Coins}" SelectedItem="{Binding SelectedCoin}">
+            <ListBox x:Name="ListBoxCoins" ItemsSource="{Binding FilteredCoin}" SelectedItem="{Binding SelectedCoin}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="5" Orientation="Horizontal">
@@ -48,7 +39,6 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1"/>
-
+        <Border/>
     </Grid>
 </Window>

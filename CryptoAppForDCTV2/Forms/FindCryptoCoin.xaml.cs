@@ -1,5 +1,4 @@
 ﻿using CryptoAppForDCTV2.Classes;
-using CryptoAppForDCTV2.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,27 +11,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CryptoAppForDCTV2
+namespace CryptoAppForDCTV2.Forms
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для FindCryptoCoin.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class FindCryptoCoin : Window
     {
-        public MainWindow()
+        public FindCryptoCoin()
         {
             InitializeComponent();
 
             DataContext = new ApplicationViewModel();
         }
 
-        private void FindButton_Click(object sender, RoutedEventArgs e)
+        private void MainButton_Click(object sender, RoutedEventArgs e)
         {
-            FindCryptoCoin findCryptoCoin = new FindCryptoCoin();
-            findCryptoCoin.Show();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
             Close();
         }
     }
